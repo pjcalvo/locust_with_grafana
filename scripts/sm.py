@@ -1,6 +1,6 @@
 from dynaconf import settings
 from locust import HttpLocust, TaskSet, task, between
-from locust_influx import expose_metrics
+from libs.influxdb_writter import expose_metrics
 
 # set influxdb writter
 expose_metrics(

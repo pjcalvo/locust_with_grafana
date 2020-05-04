@@ -20,3 +20,8 @@ grafana:
     - influxdb
   volumes:
     - /tmp/docker/grafana/data:/var/lib/grafana
+
+chronograf:
+    image: chronograf:latest
+    ports:
+        - 8087:8888
