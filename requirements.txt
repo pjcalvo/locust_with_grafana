@@ -1,0 +1,3 @@
+dynaconf==2.2.3
+locust==0.0
+locust-influx==0.2.4
