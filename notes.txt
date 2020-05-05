@@ -1,0 +1,42 @@
+# set influxdb writter
+# expose_metrics(
+#     user=settings.INFLUXDB_USER,
+#     pwd=settings.INFLUXDB_PASS,
+#     influx_host=settings.INFLUXDB_HOST,
+#     influx_port=settings.INFLUXDB_PORT,
+#     database=settings.PROJECT_ID)
+
+
+
+    # fail requests porpusely
+    @task(1)
+    def random(self):
+        self.client.get(f'/{self.id_generator()}')
+
+
+    # utility
+    @staticmethod
+    def id_generator(size=6, chars=string.ascii_uppercase + string.digits):
+        return ''.join(random.choice(chars) for _ in range(size))
+
+
+```
+--step-load
+```
+
+def on_start(self):
+    """ on_start is called when a Locust start before any task is scheduled """
+
+
+
+
+1) UI
+2) NO-WEB (--run-time)
+3) TASK WEIGHT
+4) WAIT_TIME
+5) STEP-LOAD
+6) PROGRAMATIC REQUESTS
+7) Test fixtures
+
+Mention
+Master - Slave

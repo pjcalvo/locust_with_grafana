@@ -1,14 +1,12 @@
 
 ## Execution
 ### linear
-```bash
-locust -f locust.py --no-web -c 1000 -r 2 --run-time 30m --host https://www.securitymetrics.com
-```
+locust -f locust.py
+locust -f locust.py --no-web -c 1000 -r 2 --run-time 30m --host https://pjcalvo.github.io
 
 ### escalonated
-```bash
-locust -f scripts/sm.py --no-web -c 1000 -r 1 --run-time 30m --step-load --step-clients 10 --step-time 2m --host https://securitymetrics-prod.adobemsbasic.com
-```
+locust -f locust.py --step-load
+locust -f scripts/sm.py --no-web -c 1000 -r 1 --run-time 30m --step-load --step-clients 10 --step-time 2m --host https://pjcalvo.github.io
 
 
 ## Influx DB

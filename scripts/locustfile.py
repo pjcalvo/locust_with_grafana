@@ -1,8 +1,9 @@
+import string
+import random
 from dynaconf import settings
 from locust import HttpLocust, TaskSet, task, between
 from libs.influxdb_writter import expose_metrics
 
-# set influxdb writter
 expose_metrics(
     user=settings.INFLUXDB_USER,
     pwd=settings.INFLUXDB_PASS,
@@ -10,35 +11,29 @@ expose_metrics(
     influx_port=settings.INFLUXDB_PORT,
     database=settings.PROJECT_ID)
 
+class WebsiteTasks(TaskSet):
 
-class WebsiteTasks(TaskSet):   
     @task
-    def index(self):
+    def home(self):
         self.client.get("/")
         
     @task
-    def contact(self):
-        self.client.get("/contact")
-
+    def gdpr_defense(self):
+        self.client.get("/gdpr-defense")   
+        
     @task
-    def pci(self):
-        self.client.get("/pci")
-
-    @task
-    def pci_small_business(self):
-        self.client.get("/pci-small-business")
-
-    @task
-    def hipaa(self):
-        self.client.get("/hipaa")
-
-    # fail requests porpusely
-    @task
-    def cause_fail_get_request(self):
-        self.client.get(f'/invalid-path')
+    def hipaa_policies(self):
+        self.client.get("/hipaa-policies")   
     
+    @task
+    def guided_hipaa(self):
+        self.client.get("/guided-hipaa")   
+    
+    @task
+    def internal_network(self):
+        self.client.get("/internal-network-scan")
 
 class WebsiteUser(HttpLocust):
     task_set = WebsiteTasks
-    wait_time = between(5, 15)
+    wait_time = between(0,0) # wait between tasks
     host = settings.HOST

@@ -10,7 +10,7 @@
       "type": "grafana",
       "id": "grafana",
       "name": "Grafana",
-      "version": "6.5.3"
+      "version": "6.7.3"
     },
     {
       "type": "panel",
@@ -67,7 +67,7 @@
   "gnetId": null,
   "graphTooltip": 1,
   "id": null,
-  "iteration": 1588602939689,
+  "iteration": 1588695265615,
   "links": [],
   "panels": [
     {
@@ -103,6 +103,9 @@
             "lastNotNull"
           ],
           "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
             "decimals": 0,
             "mappings": [
               {
@@ -116,23 +119,26 @@
             "max": 100,
             "min": 0,
             "nullValueMode": "connected",
-            "thresholds": [
-              {
-                "color": "green",
-                "value": null
-              }
-            ],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                }
+              ]
+            },
             "title": "RPS",
             "unit": "none"
           },
-          "override": {},
+          "overrides": [],
           "values": false
         },
         "orientation": "horizontal",
         "showThresholdLabels": false,
         "showThresholdMarkers": true
       },
-      "pluginVersion": "6.5.3",
+      "pluginVersion": "6.7.3",
       "targets": [
         {
           "groupBy": [
@@ -221,7 +227,6 @@
       "maxDataPoints": 100,
       "nullPointMode": "connected",
       "nullText": null,
-      "options": {},
       "postfix": "",
       "postfixFontSize": "50%",
       "prefix": "",
@@ -341,7 +346,6 @@
       "maxDataPoints": 100,
       "nullPointMode": "connected",
       "nullText": null,
-      "options": {},
       "postfix": "",
       "postfixFontSize": "50%",
       "prefix": "",
@@ -460,7 +464,6 @@
       "maxDataPoints": 100,
       "nullPointMode": "connected",
       "nullText": null,
-      "options": {},
       "postfix": "",
       "postfixFontSize": "50%",
       "prefix": "",
@@ -566,7 +569,6 @@
       },
       "id": 4,
       "interval": "",
-      "options": {},
       "pageSize": null,
       "showHeader": true,
       "sort": {
@@ -576,6 +578,7 @@
       "styles": [
         {
           "alias": "",
+          "align": "auto",
           "colorMode": null,
           "colors": [
             "rgba(245, 54, 54, 0.9)",
@@ -590,6 +593,7 @@
         },
         {
           "alias": "",
+          "align": "auto",
           "colorMode": "cell",
           "colors": [
             "#56A64B",
@@ -696,7 +700,6 @@
       "maxDataPoints": 100,
       "nullPointMode": "connected",
       "nullText": null,
-      "options": {},
       "postfix": "",
       "postfixFontSize": "50%",
       "prefix": "",
@@ -1047,7 +1050,6 @@
       },
       "id": 24,
       "interval": "",
-      "options": {},
       "pageSize": 10,
       "scroll": true,
       "showHeader": true,
@@ -1058,6 +1060,7 @@
       "styles": [
         {
           "alias": "",
+          "align": "auto",
           "colorMode": null,
           "colors": [
             "rgba(245, 54, 54, 0.9)",
@@ -1074,6 +1077,7 @@
         },
         {
           "alias": "Event",
+          "align": "auto",
           "colorMode": null,
           "colors": [
             "rgba(245, 54, 54, 0.9)",
@@ -1090,6 +1094,7 @@
         },
         {
           "alias": "Node ID",
+          "align": "auto",
           "colorMode": null,
           "colors": [
             "rgba(245, 54, 54, 0.9)",
@@ -1100,6 +1105,23 @@
           "decimals": 2,
           "mappingType": 1,
           "pattern": "locust_events.node_id",
+          "thresholds": [],
+          "type": "number",
+          "unit": "short"
+        },
+        {
+          "alias": "User Count",
+          "align": "auto",
+          "colorMode": null,
+          "colors": [
+            "rgba(245, 54, 54, 0.9)",
+            "rgba(237, 129, 40, 0.89)",
+            "rgba(50, 172, 45, 0.97)"
+          ],
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "decimals": 2,
+          "mappingType": 1,
+          "pattern": "locust_events.user_count",
           "thresholds": [],
           "type": "number",
           "unit": "short"
@@ -1124,7 +1146,7 @@
           ],
           "orderByTime": "ASC",
           "policy": "default",
-          "query": "SELECT \"time\", \"event\", \"node_id\"\nFROM \"locust_events\" \nWHERE $timeFilter",
+          "query": "SELECT \"time\", \"event\", \"node_id\", \"user_count\"\nFROM \"locust_events\" \nWHERE $timeFilter",
           "rawQuery": true,
           "refId": "A",
           "resultFormat": "time_series",
@@ -1162,7 +1184,6 @@
         "y": 23
       },
       "id": 29,
-      "options": {},
       "pageSize": 10,
       "scroll": true,
       "showHeader": true,
@@ -1173,12 +1194,14 @@
       "styles": [
         {
           "alias": "Time",
+          "align": "auto",
           "dateFormat": "YYYY-MM-DD HH:mm:ss",
           "pattern": "Time",
           "type": "hidden"
         },
         {
           "alias": "Error",
+          "align": "auto",
           "colorMode": null,
           "colors": [
             "rgba(245, 54, 54, 0.9)",
@@ -1197,6 +1220,7 @@
         },
         {
           "alias": "Total",
+          "align": "auto",
           "colorMode": null,
           "colors": [
             "rgba(245, 54, 54, 0.9)",
@@ -1269,7 +1293,6 @@
         "y": 30
       },
       "id": 22,
-      "options": {},
       "pageSize": 10,
       "scroll": true,
       "showHeader": true,
@@ -1280,12 +1303,14 @@
       "styles": [
         {
           "alias": "Time",
+          "align": "auto",
           "dateFormat": "YYYY-MM-DD HH:mm:ss",
           "pattern": "Time",
           "type": "hidden"
         },
         {
           "alias": "Error",
+          "align": "auto",
           "colorMode": null,
           "colors": [
             "rgba(245, 54, 54, 0.9)",
@@ -1303,6 +1328,7 @@
         },
         {
           "alias": "Total",
+          "align": "auto",
           "colorMode": null,
           "colors": [
             "rgba(245, 54, 54, 0.9)",
@@ -1365,7 +1391,7 @@
     }
   ],
   "refresh": "2s",
-  "schemaVersion": 21,
+  "schemaVersion": 22,
   "style": "dark",
   "tags": [
     "locust"
@@ -1374,6 +1400,9 @@
     "list": [
       {
         "current": {
+          "selected": false,
+          "text": "SM_PROD_AEM",
+          "value": "SM_PROD_AEM"
         },
         "hide": 0,
         "includeAll": false,
@@ -1411,5 +1440,8 @@
   "timezone": "browser",
   "title": "Locust Dashboard",
   "uid": "",
+  "variables": {
+    "list": []
+  },
   "version": 1
 }
