@@ -10,7 +10,7 @@ influxdb:
     INFLUXDB_ADMIN_PASSWORD: pass
     INFLUXDB_HTTP_AUTH_ENABLED: "false"
   volumes:
-    - /tmp/docker/influxdb/data:/var/lib/influxdb
+    - /Users/pjcalvo/Documents/docker/data:/var/lib/influxdb
 
 grafana:
   image: grafana/grafana:latest
@@ -21,11 +21,13 @@ grafana:
   links:
     - influxdb
   volumes:
-    - /tmp/docker/grafana/data:/var/lib/grafana
+    - /Users/pjcalvo/Documents/docker/data:/var/lib/grafana
 
 chronograf:
     image: chronograf:latest
     links:
     - influxdb
+    volumes:
+    - /Users/pjcalvo/Documents/docker/data:/var/lib/grafana
     ports:
-      - 8087:8888
+    - "8087:8888"
